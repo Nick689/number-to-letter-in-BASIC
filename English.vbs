@@ -1,14 +1,14 @@
 global function numtoletter(numValue as double) as string
 	dim numString as string
-	dim numberTable(12) as integer
-	dim tenTable(20) as string
-	dim unitTable(10) as string
+	dim numTable(12) as integer
+	dim tensTable(20) as string
+	dim unitsTable(10) as string
 	dim negative as boolean
 	dim leng as integer
 	dim outputString as string
 	dim i as integer
-	unitTable=array("","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","THIRTEEN","FOURTEEN","FIFTEEN","SIXTEEN","SEVENTEEN","EIGHTEEN","NINETEEN")
-	tenTable=array("","","TWENTY","THIRTY","FORTY","FIFTY","SIXTY","SEVENTY","EIGHTY","NINETY")
+	unitsTable=array("","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","THIRTEEN","FOURTEEN","FIFTEEN","SIXTEEN","SEVENTEEN","EIGHTEEN","NINETEEN")
+	tensTable=array("","","TWENTY","THIRTY","FORTY","FIFTY","SIXTY","SEVENTY","EIGHTY","NINETY")
 	if numValue>999999999999 then
 		numtoletter=""
 		exit function
@@ -26,69 +26,69 @@ global function numtoletter(numValue as double) as string
 		leng=leng+1
 	wend
 	for i=1 to 12
-		numberTable(i-1)=cint(mid(numString,i,1))
-		leng=numberTable(i-1)
+		numTable(i-1)=cint(mid(numString,i,1))
+		leng=numTable(i-1)
 	next
-	if numberTable(0)+numberTable(1)+numberTable(2) then
-		if numberTable(0) then
-			select case numberTable(1)
-			case 0: outputString=unitTable(numberTable(0))+" HUNDRED "+unitTable(numberTable(2))+" BILLION"
-			case 1: outputString=unitTable(numberTable(0))+" HUNDRED "+unitTable(10+numberTable(2))+" BILLION"
-			case else: outputString=unitTable(numberTable(0))+" HUNDRED "+tenTable(numberTable(1))+" "+unitTable(numberTable(2))+" BILLION"
+	if numTable(0)+numTable(1)+numTable(2) then
+		if numTable(0) then
+			select case numTable(1)
+			case 0: outputString=unitsTable(numTable(0))+" HUNDRED "+unitsTable(numTable(2))+" BILLION"
+			case 1: outputString=unitsTable(numTable(0))+" HUNDRED "+unitsTable(10+numTable(2))+" BILLION"
+			case else: outputString=unitsTable(numTable(0))+" HUNDRED "+tensTable(numTable(1))+" "+unitsTable(numTable(2))+" BILLION"
 			end select
 		else
-			select case numberTable(1)
-			case 0: if numberTable(3) then outputString=unitTable(numberTable(3))+" BILLION"
-			case 1: outputString=unitTable(10+numberTable(3))+" BILLION"
-			case else: outputString=tenTable(numberTable(2))+" "+unitTable(numberTable(3))+" BILLION"
+			select case numTable(1)
+			case 0: if numTable(3) then outputString=unitsTable(numTable(3))+" BILLION"
+			case 1: outputString=unitsTable(10+numTable(3))+" BILLION"
+			case else: outputString=tensTable(numTable(2))+" "+unitsTable(numTable(3))+" BILLION"
 			end select
 		endif
 	endif
-	if numberTable(3)+numberTable(4)+numberTable(5) then
+	if numTable(3)+numTable(4)+numTable(5) then
 		if outputString<>"" then outputString=outputString+" "
-		if numberTable(3) then
-			select case numberTable(4)
-			case 0:	outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+unitTable(numberTable(5))+" MILLION"
-			case 1: outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+unitTable(10+numberTable(5))+" MILLION"
-			case else: outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+tenTable(numberTable(4))+" "+unitTable(numberTable(5))+" MILLION"
+		if numTable(3) then
+			select case numTable(4)
+			case 0:	outputString=outputString+unitsTable(numTable(3))+" HUNDRED "+unitsTable(numTable(5))+" MILLION"
+			case 1: outputString=outputString+unitsTable(numTable(3))+" HUNDRED "+unitsTable(10+numTable(5))+" MILLION"
+			case else: outputString=outputString+unitsTable(numTable(3))+" HUNDRED "+tensTable(numTable(4))+" "+unitsTable(numTable(5))+" MILLION"
 			end select
 		else
-			select case numberTable(4)
-			case 0: if numberTable(5) then outputString=outputString+unitTable(numberTable(5))+" MILLION"
-			case 1: outputString=outputString+unitTable(10+numberTable(5))+" MILLION"
-			case else: outputString=outputString+tenTable(numberTable(4))+" "+unitTable(numberTable(5))+" MILLION"
+			select case numTable(4)
+			case 0: if numTable(5) then outputString=outputString+unitsTable(numTable(5))+" MILLION"
+			case 1: outputString=outputString+unitsTable(10+numTable(5))+" MILLION"
+			case else: outputString=outputString+tensTable(numTable(4))+" "+unitsTable(numTable(5))+" MILLION"
 			end select
 		endif
 	endif
-	if numberTable(6)+numberTable(7)+numberTable(8) then
+	if numTable(6)+numTable(7)+numTable(8) then
 		if outputString<>"" then outputString=outputString+" "
-		if numberTable(6) then
-			select case numberTable(7)
-			case 0: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+unitTable(numberTable(8))+" THOUSAND"
-			case 1: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+unitTable(10+numberTable(8))+" THOUSAND"
-			case else: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+tenTable(numberTable(7))+" "+unitTable(numberTable(8))+" THOUSAND"
+		if numTable(6) then
+			select case numTable(7)
+			case 0: outputString=outputString+unitsTable(numTable(6))+" HUNDRED "+unitsTable(numTable(8))+" THOUSAND"
+			case 1: outputString=outputString+unitsTable(numTable(6))+" HUNDRED "+unitsTable(10+numTable(8))+" THOUSAND"
+			case else: outputString=outputString+unitsTable(numTable(6))+" HUNDRED "+tensTable(numTable(7))+" "+unitsTable(numTable(8))+" THOUSAND"
 			end select
 		else
-			select case numberTable(7)
-			case 0: if numberTable(8) then	outputString=outputString+unitTable(numberTable(8))+" THOUSAND"
-			case 1: outputString=outputString+unitTable(10+numberTable(8))+" THOUSAND"
-			case else: outputString=outputString+tenTable(numberTable(7))+" "+unitTable(numberTable(8))+" THOUSAND"
+			select case numTable(7)
+			case 0: if numTable(8) then	outputString=outputString+unitsTable(numTable(8))+" THOUSAND"
+			case 1: outputString=outputString+unitsTable(10+numTable(8))+" THOUSAND"
+			case else: outputString=outputString+tensTable(numTable(7))+" "+unitsTable(numTable(8))+" THOUSAND"
 			end select
 		endif
 	endif
-	if numberTable(9)+numberTable(10)+numberTable(11) then
+	if numTable(9)+numTable(10)+numTable(11) then
 		if outputString<>"" then outputString=outputString+" "
-		if numberTable(9) then
-			select case numberTable(10)
-			case 0: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+unitTable(numberTable(11))
-			case 1: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+unitTable(10+numberTable(11))
-			case else: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+tenTable(numberTable(10))+" "+unitTable(numberTable(11))
+		if numTable(9) then
+			select case numTable(10)
+			case 0: outputString=outputString+unitsTable(numTable(9))+" HUNDRED "+unitsTable(numTable(11))
+			case 1: outputString=outputString+unitsTable(numTable(9))+" HUNDRED "+unitsTable(10+numTable(11))
+			case else: outputString=outputString+unitsTable(numTable(9))+" HUNDRED "+tensTable(numTable(10))+" "+unitsTable(numTable(11))
 			end select
 		else
-			select case numberTable(10)
-			case 0: outputString=outputString+unitTable(numberTable(11))
-			case 1: outputString=outputString+unitTable(10+numberTable(11))
-			case else: outputString=outputString+tenTable(numberTable(10))+" "+unitTable(numberTable(11))
+			select case numTable(10)
+			case 0: outputString=outputString+unitsTable(numTable(11))
+			case 1: outputString=outputString+unitsTable(10+numTable(11))
+			case else: outputString=outputString+tensTable(numTable(10))+" "+unitsTable(numTable(11))
 			end select
 		endif
 	endif
