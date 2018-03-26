@@ -1,5 +1,5 @@
 Credit go to Fernand COSTA
- 
+It works with a maximum of 999.999.999.999
  
   
 # number-to-letter-in-ENGLISH
@@ -104,7 +104,7 @@ end function
  
  
   
-#number-to-letter-in-FRENCH
+# number-to-letter-in-FRENCH
  
 ```
 function numbertoletter(vNombre as double) as string
