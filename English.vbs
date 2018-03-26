@@ -1,77 +1,98 @@
-function numtoletter(vNombre as double) as string
-	on error goto ErrorHandler
-	Dim vOutput as string
-	Dim vTriplette as integer
-	Dim vMilliard as integer
-	Dim vMillion as integer
-	Dim vMille as integer
-	Dim vUnite as integer
-	Dim vNegatif as boolean
-	Dim vString as string
-	Dim vlength as integer
-	Dim vCentaine as integer
-	Dim vDizaine as integer
-	Dim vUnites as integer
-	Dim dixTable as Variant
-	Dim unitTable as Variant
-	if vNombre>999999999999 then
+global function numtoletter(numValue as double) as string
+	dim numString as string
+	dim numberTable(12) as integer
+	dim tenTable(20) as string
+	dim unitTable(10) as string
+	dim negative as boolean
+	dim leng as integer
+	dim outputString as string
+	dim i as integer
+	unitTable=array("","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","THIRTEEN","FOURTEEN","FIFTEEN","SIXTEEN","SEVENTEEN","EIGHTEEN","NINETEEN")
+	tenTable=array("","","TWENTY","THIRTY","FORTY","FIFTY","SIXTY","SEVENTY","EIGHTY","NINETY")
+	if numValue>999999999999 then
 		numtoletter=""
 		exit function
 	endif
-	if vNombre<0 then
-		vNegatif=false
-		vNombre=abs(vNombre)
+	if numValue<0 then
+		negative=true
+		numValue=abs(numValue)
 	else
-		vNegatif=true
+		negative=false
 	endif
-	vString=cstr(vNombre)
-	vlength=len(vString)
-	while vlength<12
-		vString=" "+vString
-		vlength=vlength+1
+	numString=cstr(numValue)
+	leng=len(numString)
+	while leng<12
+		numString="0"+numString
+		leng=leng+1
 	wend
-	vMilliard=cint(mid(vString,1,3))
-	vMillion=cint(mid(vString,4,3))
-	vMille=cint(mid(vString,7,3))
-	vUnite=cint(mid(vString,10,3))
-	if vMilliard then
-		vTriplette=vMilliard
-		gosub routine
-		vOutput=vOutput+" BILLION "
+	for i=1 to 12
+		numberTable(i-1)=cint(mid(numString,i,1))
+		leng=numberTable(i-1)
+	next
+	if numberTable(0)+numberTable(1)+numberTable(2) then
+		if numberTable(0) then
+			select case numberTable(1)
+			case 0: outputString=unitTable(numberTable(0))+" HUNDRED "+unitTable(numberTable(2))+" BILLION"
+			case 1: outputString=unitTable(numberTable(0))+" HUNDRED "+unitTable(10+numberTable(2))+" BILLION"
+			case else: outputString=unitTable(numberTable(0))+" HUNDRED "+tenTable(numberTable(1))+" "+unitTable(numberTable(2))+" BILLION"
+			end select
+		else
+			select case numberTable(1)
+			case 0: if numberTable(3) then outputString=unitTable(numberTable(3))+" BILLION"
+			case 1: outputString=unitTable(10+numberTable(3))+" BILLION"
+			case else: outputString=tenTable(numberTable(2))+" "+unitTable(numberTable(3))+" BILLION"
+			end select
+		endif
 	endif
-	if vMillion then
-		vTriplette=vMillion
-		gosub routine
-		vOutput=vOutput+" MILLION "
+	if numberTable(3)+numberTable(4)+numberTable(5) then
+		if outputString<>"" then outputString=outputString+" "
+		if numberTable(3) then
+			select case numberTable(4)
+			case 0:	outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+unitTable(numberTable(5))+" MILLION"
+			case 1: outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+unitTable(10+numberTable(5))+" MILLION"
+			case else: outputString=outputString+unitTable(numberTable(3))+" HUNDRED "+tenTable(numberTable(4))+" "+unitTable(numberTable(5))+" MILLION"
+			end select
+		else
+			select case numberTable(4)
+			case 0: if numberTable(5) then outputString=outputString+unitTable(numberTable(5))+" MILLION"
+			case 1: outputString=outputString+unitTable(10+numberTable(5))+" MILLION"
+			case else: outputString=outputString+tenTable(numberTable(4))+" "+unitTable(numberTable(5))+" MILLION"
+			end select
+		endif
 	endif
-	if vMille then
-		vTriplette=vMille
-		gosub routine
-		vOutput=vOutput+" THOUSAND "
+	if numberTable(6)+numberTable(7)+numberTable(8) then
+		if outputString<>"" then outputString=outputString+" "
+		if numberTable(6) then
+			select case numberTable(7)
+			case 0: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+unitTable(numberTable(8))+" THOUSAND"
+			case 1: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+unitTable(10+numberTable(8))+" THOUSAND"
+			case else: outputString=outputString+unitTable(numberTable(6))+" HUNDRED "+tenTable(numberTable(7))+" "+unitTable(numberTable(8))+" THOUSAND"
+			end select
+		else
+			select case numberTable(7)
+			case 0: if numberTable(8) then	outputString=outputString+unitTable(numberTable(8))+" THOUSAND"
+			case 1: outputString=outputString+unitTable(10+numberTable(8))+" THOUSAND"
+			case else: outputString=outputString+tenTable(numberTable(7))+" "+unitTable(numberTable(8))+" THOUSAND"
+			end select
+		endif
 	endif
-	if vUnite then
-		vTriplette=vUnite
-		gosub routine
+	if numberTable(9)+numberTable(10)+numberTable(11) then
+		if outputString<>"" then outputString=outputString+" "
+		if numberTable(9) then
+			select case numberTable(10)
+			case 0: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+unitTable(numberTable(11))
+			case 1: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+unitTable(10+numberTable(11))
+			case else: outputString=outputString+unitTable(numberTable(9))+" HUNDRED "+tenTable(numberTable(10))+" "+unitTable(numberTable(11))
+			end select
+		else
+			select case numberTable(10)
+			case 0: outputString=outputString+unitTable(numberTable(11))
+			case 1: outputString=outputString+unitTable(10+numberTable(11))
+			case else: outputString=outputString+tenTable(numberTable(10))+" "+unitTable(numberTable(11))
+			end select
+		endif
 	endif
-	if vNombre<1 then vOutput="ZERO"
-	if vNegatif=false then vOutput="MINUS "+vOutput
-	numtoletter=vOutput
-	exit function
-routine:
-	unitTable=array("","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","ELEVEN","TWELVE","THIRTEEN","FOURTEEN","FIFTEEN","SIXTEEN","SEVENTEEN","EIGHTEEN","NINETEEN")
-	dixTable=array("","","TWENTY","THIRTY","FORTY","FIFTY","SIXTY","SEVENTY","EIGHTY","NINETY")
-	if vTriplette then
-		vCentaine=int(vTriplette/100)
-		vDizaine=int((vTriplette-(vCentaine*100))/10)
-		vUnites=vTriplette-vCentaine*100-vDizaine*10
-	endif
-	if vCentaine then vOutput=vOutput+unitTable(vCentaine)+" HUNDRED"
-	if vTriplette-vCentaine*100<20 then
-		vOutput=vOutput+" "+unitTable(vTriplette-vCentaine*100)
-	else
-		vOutput=vOutput+" "+dixTable(vDizaine)+" "+unitTable(vUnites)
-	endif
-return
-ErrorHandler:
-	numtoletter=""
+	if numValue=0 then outputString="ZERO"
+	if negative then outputString="MINUS "+outputString
+	numtoletter=outputString
 end function
