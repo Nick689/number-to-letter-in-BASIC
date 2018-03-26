@@ -27,11 +27,11 @@ function numtoletter(vNombre as double) as string
 		vNombre=abs(vNombre)
 	else
 		vNegatif=true
-	end if
+	endif
 	if vNombre>999999999999 then
 		numtoletter=""
 		exit function
-	end if	
+	endif	
 	vString=cstr(vNombre)
 	vlength=len(vString)
 	while vlength<12
@@ -47,13 +47,13 @@ function numtoletter(vNombre as double) as string
 		vGroupe=vMilliard
 		gosub Groupe
 		vOutput=vOutput+" BILLION"
-	end if
+	endif
 	if vMillion then
 		if vOutput<>"" then vOutput=vOutput+" "
 		vGroupe=vMillion
 		gosub Groupe
 		vOutput=vOutput+" MILLION"
-	end if
+	endif
 	if vMille then
 		if vOutput<>"" then vOutput=vOutput+" "
 		if vMille>=2 then
@@ -62,13 +62,13 @@ function numtoletter(vNombre as double) as string
 			vOutput=vOutput+" THOUSAND"
 		else
 			vOutput=vOutput+"THOUSAND"
-		end if	
-	end if
+		endif	
+	endif
 	if vUnite then
 		if vOutput<>"" then vOutput=vOutput+" "
 		vGroupe=vUnite
 		gosub Groupe
-	end if
+	endif
 	if vNombre<1 then vOutput="ZERO"
 	if vNegatif=false then vOutput="- "+vOutput
 	numtoletter=vOutput
@@ -133,7 +133,7 @@ function numbertoletter(vNombre as double) as string
 	if vNombre>999999999999 then
 		numtoletter=""
 		exit function
-	end if
+	endif
 	vString=cstr(vNombre)
 	vlength=len(vString)
 	while vlength<12
@@ -150,14 +150,14 @@ function numbertoletter(vNombre as double) as string
 		gosub Groupe
 		vOutput=vOutput+" MILLIARD"
 		if vMilliard>1 then vOutput=vOutput+"S"
-	end if
+	endif
 	if vMillion then
 		if vOutput<>"" then vOutput=vOutput+" "
 		vGroupe=vMillion
 		gosub Groupe
 		vOutput=vOutput+" MILLION"
 		if vMillion>1 then vOutput=vOutput+"S"
-	end if
+	endif
 	if vMille then
 		if vOutput<>"" then vOutput=vOutput+" "
 		if vMille>=2 then
@@ -166,13 +166,13 @@ function numbertoletter(vNombre as double) as string
 			vOutput=vOutput+" MILLE"
 		else
 			vOutput=vOutput+"MILLE"
-		end if	
-	end if
+		endif	
+	endif
 	if vUnite then
 		if vOutput<>"" then vOutput=vOutput+" "
 		vGroupe=vUnite
 		gosub Groupe
-	end if
+	endif
 	if vNombre<1 then vOutput="ZÉRO"
 	if vNegatif=false then vOutput="MOINS "+vOutput
 	numbertoletter=vOutput
@@ -203,7 +203,7 @@ Groupe:
 			if vDizaine=8 then vOutput=vOutput+"-UN" else vOutput=vOutput+" ET UN"
 		else
 			if vUnites>1 then vOutput=vOutput+"-"+tUnite(vUnites-1)
-		end if
+		endif
 	case 7,9
 		vOutput=vOutput+tdix(vDizaine-3)
 		select case vUnites
