@@ -1,5 +1,9 @@
+Credit go to Fernand COSTA
+ 
+ 
+  
 # number-to-letter-in-ENGLISH
-
+ 
 ```
 function numtoletter(vNombre as double) as string
 	on error goto ErrorHandler
@@ -97,9 +101,11 @@ ErrorHandler:
 	numtoletter=""
 end function
 ```
-
-
-#number-to-letter-in-french
+ 
+ 
+  
+#number-to-letter-in-FRENCH
+ 
 ```
 function numbertoletter(vNombre as double) as string
 	on error goto ErrorHandler
