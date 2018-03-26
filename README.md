@@ -1,6 +1,6 @@
 # number-to-letter-in-ENGLISH
 
-'''
+```
 function numtoletter(vNombre as double) as string
 	on error goto ErrorHandler
 	Dim vOutput as string
@@ -96,11 +96,11 @@ return
 ErrorHandler:
 	numtoletter=""
 end function
-'''
+```
 
 
 #number-to-letter-in-french
-'''
+```
 function numbertoletter(vNombre as double) as string
 	on error goto ErrorHandler
 	Dim vOutput as string
@@ -209,4 +209,4 @@ return
 ErrorHandler:
 	numbertoletter=""
 end function
-'''
+```
