@@ -22,16 +22,16 @@ function numtoletter(vNombre as double) as string
 	Dim tVingt as Variant
 	Dim tDix as Variant
 	Dim tUnite as Variant
-	if vNombre>999999999999 then
-		numtoletter=""
-		exit function
-	end if
 	if vNombre<0 then
 		vNegatif=false
 		vNombre=abs(vNombre)
 	else
 		vNegatif=true
-	endif
+	end if
+	if vNombre>999999999999 then
+		numtoletter=""
+		exit function
+	end if	
 	vString=cstr(vNombre)
 	vlength=len(vString)
 	while vlength<12
@@ -130,6 +130,10 @@ function numbertoletter(vNombre as double) as string
 	else
 		vNegatif=true
 	endif
+	if vNombre>999999999999 then
+		numtoletter=""
+		exit function
+	end if
 	vString=cstr(vNombre)
 	vlength=len(vString)
 	while vlength<12
