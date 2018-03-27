@@ -1,4 +1,4 @@
-global function numtoletter(numValue as double) as string
+function numtoletter(numValue as double) as string
 	dim numString as string
 	dim numTable(12) as integer
 	dim tensTable(20) as string
