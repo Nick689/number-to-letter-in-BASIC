@@ -1,19 +1,17 @@
 - English1 complete the test in 182sec
 - English2 complete the test in 249sec
 - English3 complete the test in 165sec
-- English4 complete the test in 331sec
+- English4 complete the test in 331sec  There's an performance issue with array in LibreOffice
 - English5 complete the test in 215sec
-.
-There's an performance issue with array in LibreOffice
-.
-.
-.
+. 
+. 
+. 
 Please propose your algorithm
-.
-.
-.
+. 
+. 
+. 
 ## test method:
-.
+. 
 ```
 sub test
 	dim i as double
