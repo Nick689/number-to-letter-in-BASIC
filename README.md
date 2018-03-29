@@ -2,6 +2,7 @@
 - English2 complete the test in 249sec
 - English3 complete the test in 165sec
 - English4 complete the test in 331sec
+- English5 complete the test in 215sec
 .
 There's an performance issue with array in LibreOffice
 .
