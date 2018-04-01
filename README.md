@@ -12,7 +12,7 @@ sub test
 	dim start as date
 	start=now()
 	for i=0 to 999999
-		numtest=numtoletter1(i)
+		numtest=nenglish2(i)
 	next
 	msgbox(datediff("s",start,now()))
 end sub
