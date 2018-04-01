@@ -47,9 +47,9 @@ function english2(inputvalue as double) as string
 				end select
 			endif
 			select case i
-				case 1: outputstring=outputstring+" BILLION"
-				case 4: outputstring=outputstring+" MILLION"
-				case 7: outputstring=outputstring+" THOUSAND"
+			case 1: outputstring=outputstring+" BILLION"
+			case 4: outputstring=outputstring+" MILLION"
+			case 7: outputstring=outputstring+" THOUSAND"
 			end select
 		endif
 	next
