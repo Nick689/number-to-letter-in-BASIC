@@ -1,4 +1,4 @@
-- English1 pass the test in 188sec, is compact and easy to read, it is written in 56 lines
+- English1 pass the test in 188sec, it is compact and easy to read, it is written in 54 lines
 - English2 pass the test in 133sec, is speed optimized by using minimaly arrays and string functions
 - Please propose your algorithm if you have faster
 
