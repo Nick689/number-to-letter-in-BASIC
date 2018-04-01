@@ -5,7 +5,6 @@ function english2(inputvalue as double) as string' 156s
 	dim leng as integer
 	dim units as variant
 	dim tens as variant
-	dim multiple as variant
 	dim triplet as integer
 	dim triplet1 as integer
 	dim triplet2 as integer
@@ -13,7 +12,6 @@ function english2(inputvalue as double) as string' 156s
 	dim i as integer
 	units=array(""," ONE"," TWO"," THREE"," FOUR"," FIVE"," SIX"," SEVEN"," EIGHT"," NINE"," TEN"," ELEVEN"," TWELVE"," THIRTEEN"," FOURTEEN"," FIFTEEN"," SIXTEEN"," SEVENTEEN"," EIGHTEEN"," NINETEEN")
 	tens=array("",""," TWENTY"," THIRTY"," FORTY"," FIFTY"," SIXTY"," SEVENTY"," EIGHTY"," NINETY")
-	multiple=array(""," BILLION","",""," MILLION","",""," THOUSAND","","","")
 	if inputvalue>999999999999 then
 		english2=""
 		exit function
@@ -43,11 +41,16 @@ function english2(inputvalue as double) as string' 156s
 			if triplet then
 				if triplet1 then outputstring=outputstring+units(triplet1)+" HUNDRED"
 				select case triplet2
-				case 0: outputstring=outputstring+units(triplet3)+multiple(i)
-				case 1: outputstring=outputstring+units(10+triplet3)+multiple(i)
-				case else: outputstring=outputstring+tens(triplet2)+units(triplet3)+multiple(i)
+				case 0: outputstring=outputstring+units(triplet3)
+				case 1: outputstring=outputstring+units(10+triplet3)
+				case else: outputstring=outputstring+tens(triplet2)+units(triplet3)
 				end select
 			endif
+			select case i
+				case 1: outputstring=outputstring+" BILLION"
+				case 4: outputstring=outputstring+" MILLION"
+				case 7: outputstring=outputstring+" THOUSAND"
+			end select
 		endif
 	next
 	if negative then
