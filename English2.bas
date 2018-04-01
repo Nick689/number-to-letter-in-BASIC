@@ -1,4 +1,4 @@
-function english2(inputvalue as double) as string' 156s
+function english2(inputvalue as double) as string
 	dim inputstring as string
 	dim outputstring as string
 	dim negative as boolean
