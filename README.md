@@ -1,6 +1,7 @@
-- English1 complete the test in 156sec
-- English2 complete the test in 189sec, it is more easy to understand, but as it use more string function it is slower than English1
-- Please propose your algorithm
+- English1 pass the test in 188sec, is easy to read and understand
+- English2 pass the test in 148sec, is a compact version written in 59 lines
+- English3 pass the test in 133sec, is speed optimized by using minimaly arrays and string function
+- Please propose your algorithm if you have faster
 
 ## test method:
  
