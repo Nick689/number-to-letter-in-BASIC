@@ -1,5 +1,5 @@
 - English1 complete the test in 156sec
-- English2 complete the test in 189sec it use a little more string function that slow down the script
+- English2 complete the test in 189sec it use more string function that slow down the script
 - Please propose your algorithm
 
 ## test method:
