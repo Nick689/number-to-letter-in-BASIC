@@ -3,7 +3,8 @@ function french(inputvalue as double) as string
 	dim ouputstring as string
 	dim negative as boolean
 	dim leng as integer
-	dim units as variant
+	dim unit01 as variant
+	dim unit11 as variant
 	dim tens as variant
 	dim multiple as variant
 	dim triplet as integer
@@ -11,7 +12,9 @@ function french(inputvalue as double) as string
 	dim triplet2 as integer
 	dim triplet3 as integer
 	dim i as integer
-	units=array(""," UN"," DEUX"," TROIS"," QUATRE"," CINQ"," SIX"," SEPT"," HUIT"," NEUF"," DIX"," ONZE"," DOUZE"," TREIZE"," QUATORZE"," QUINZE"," SEIZE"," DIX SEPT"," DIX HUIT"," DIX NEUF")
+	unit01=array(""," UN"," DEUX"," TROIS"," QUATRE"," CINQ"," SIX"," SEPT"," HUIT"," NEUF")
+	unit11=array(" DIX"," ONZE"," DOUZE"," TREIZE"," QUATORZE"," QUINZE"," SEIZE"," DIX SEPT"," DIX HUIT"," DIX NEUF")
+	tens=array("",""," VINGT"," TRENTE"," QUARANTE"," CINQUANTE"," SOIXANTE"," SOIXANTE DIX"," QUATRE VINGT"," QUATRE VINGT DIX")
 	if inputvalue>999999999999 then
 		french=""
 		exit function
@@ -34,83 +37,47 @@ function french(inputvalue as double) as string
 	wend
 	for i=1 to 10 step 3
 		triplet=cint(mid(inputstring,i,3))
-		if triplet then
+		select case triplet
+		case 0:
+		case 1
+			select case i
+			case 1: outputstring=outputstring+" UN MILLIARD"
+			case 4: outputstring=outputstring+" UN MILLION"
+			case 7: outputstring=outputstring+" MILLE"
+			end select
+		case else
 			triplet1=triplet\100
 			triplet2=(triplet-(triplet1*100))\10
 			triplet3=triplet-triplet1*100-triplet2*10
 			select case triplet1
-				case 0:
-				case 1: outputstring=outputstring+" CENT"
-				case else: outputstring=outputstring+units(triplet1)+" CENT"
+			case 0:
+			case 1: outputstring=outputstring+" CENT"
+			case else: outputstring=outputstring+unit01(triplet1)+" CENT"
 			end select
 			select case triplet2
-				case 0: if triplet3>1 then outputstring=outputstring+units(triplet3)
-				case 1: outputstring=outputstring+units(10+triplet3)
-				case 2
-					select case triplet3
-						case 0: outputstring=outputstring+" VINGT"
-						case 1: outputstring=outputstring+" VINGT ET"+units(triplet3)
-						case else: outputstring=outputstring+" VINGT"+units(triplet3)
-					end select
-				case 3
-					select case triplet3
-						case 0: outputstring=outputstring+" TRENTE"
-						case 1: outputstring=outputstring+" TRENTE ET"+units(triplet3)
-						case else: outputstring=outputstring+" TRENTE"+units(triplet3)
-					end select
-				case 4
-					select case triplet3
-						case 0: outputstring=outputstring+" QUARANTE"
-						case 1: outputstring=outputstring+" QUARANTE ET"+units(triplet3)
-						case else: outputstring=outputstring+" QUARANTE"+units(triplet3)
-					end select
-				case 5
-					select case triplet3
-						case 0: outputstring=outputstring+" CINQUANTE"
-						case 1: outputstring=outputstring+" CINQUANTE ET"+units(triplet3)
-						case else: outputstring=outputstring+" CINQUANTE"+units(triplet3)
-					end select
-				case 6
-					select case triplet3
-						case 0: outputstring=outputstring+" SOIXANTE"
-						case 1: outputstring=outputstring+" SOIXANTE ET"+units(triplet3)
-						case else: outputstring=outputstring+" SOIXANTE"+units(triplet3)
-					end select
-				case 7
-					select case triplet3
-						case 0: outputstring=outputstring+" SOIXANTE DIX"
-						case 1: outputstring=outputstring+" SOIXANTE ET ONZE"
-						case else: outputstring=outputstring+" SOIXANTE"+units(10+triplet3)
-					end select
-				case 8
-					if triplet3 then
-						outputstring=outputstring+" QUATRE VINGT"+units(triplet3)
-					else
-						outputstring=outputstring+" QUATRE VINGT"
-					end if
-				case 9
-					if triplet3 then
-						outputstring=outputstring+" QUATRE VINGT"+units(10+triplet3)
-					else
-						outputstring=outputstring+" QUATRE VINGT DIX"
-					end if
+			case 0: if triplet3 then outputstring=outputstring+unit01(triplet3)
+			case 1: outputstring=outputstring+unit11(triplet3)
+			case 2,3,4,5,6
+				select case triplet3
+				case 0: outputstring=outputstring+tens(triplet2)
+				case 1: outputstring=outputstring+tens(triplet2)+" ET"+unit01(triplet3)
+				case else: outputstring=outputstring+tens(triplet2)+unit01(triplet3)
+				end select
+			case 7
+				select case triplet3
+				case 0: outputstring=outputstring+" SOIXANTE DIX"
+				case 1: outputstring=outputstring+" SOIXANTE ET ONZE"
+				case else: outputstring=outputstring+" SOIXANTE"+unit11(triplet3)
+				end select
+			case 8: if triplet3 then outputstring=outputstring+" QUATRE VINGT"+unit01(triplet3) else outputstring=outputstring+" QUATRE VINGT"
+			case 9: if triplet3 then outputstring=outputstring+" QUATRE VINGT"+unit11(triplet3) else outputstring=outputstring+" QUATRE VINGT DIX"
 			end select
 			select case i
-				case 1:
-				if triplet=1 then
-					outputstring=outputstring+" MILLIARD"
-				else
-					outputstring=outputstring+" MILLIARDS"
-				endif
-				case 4:
-				if triplet=1 then
-					outputstring=outputstring+" MILLION"
-				else
-					outputstring=outputstring+" MILLIONS"
-				endif
-				case 7: outputstring=outputstring+" MILLE"
+			case 1: outputstring=outputstring+" MILLIARDS"
+			case 4: outputstring=outputstring+" MILLIONS"
+			case 7: outputstring=outputstring+" MILLE"
 			end select
-		endif
+		end select
 	next
 	if negative then
 		outputstring="MOINS"+outputstring
