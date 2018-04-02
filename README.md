@@ -2,7 +2,7 @@
 - English2 pass the test in 156sec, is littlely optimised but stays compact
 - English3 pass the test in 133sec, is speed optimized by using minimaly arrays and string functions
 - Others languages are based on English2 algorithm
-- Please propose your algorithm if you have faster
+- Please propose your algorithm if you have faster or other language
 
 ## test method:
  
