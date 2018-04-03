@@ -8,9 +8,9 @@
 ## Keys to improve Basic program speed:
 - Limit the use of string's functions, calculation deduction can sometime be a faster alternative (compare English1 to English2)
 - Limit the use of arrays
-- Declare Variant instead of array
 - Write IF-THEN-ELSE on one line when possible (no ENDIF at the end)
 - Prefer IF-THEN-ELSE on one line to SELECT-CASE
+- Declare Variant instead of array
 
 - List every case with a SELECT CASE instead of using an array (this is extreme optimisation like in English3)
 
