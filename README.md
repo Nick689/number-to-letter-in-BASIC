@@ -12,7 +12,9 @@
 - Prefer IF-THEN-ELSE on one line to SELECT-CASE
 - Declare Variant instead of array
 
-- List every case with a SELECT CASE instead of using an array (this is extreme optimisation like in English3)
+## For extreme optimisation:
+It can sometimes lead to a long program
+- List every case with a SELECT CASE instead of using an array, for example see: English3
 
 ## test method:
  
