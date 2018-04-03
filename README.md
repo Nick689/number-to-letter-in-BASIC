@@ -1,4 +1,4 @@
-- English1 pass the test in 188sec, it is compact and easy to read, it is written in 57 lines
+- English1 pass the test in 188sec, it is compact and easy to read, it is written in 53 lines
 - English2 pass the test in 150sec, is littlely optimised but stays compact
 - English3 pass the test in 133sec, is speed optimized by using minimaly arrays and string functions
 - French pass the test in 181sec, it is based on English2
