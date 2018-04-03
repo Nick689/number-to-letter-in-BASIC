@@ -5,6 +5,13 @@
 - Spanish pass the test in 180sec, it is based on English2
 - Please propose your algorithm if you have faster or other language
 
+## SPEED's keys to fast basic script:
+- Limit the use of string's functions
+- Limit the use of arrays
+- Declare Variant instead of array
+- Write IF-THEN-ELSE on one line when possible (no ENDIF at the end)
+- Prefer IF-THEN-ELSE to SELECT-CASE
+
 ## test method:
  
 ```
