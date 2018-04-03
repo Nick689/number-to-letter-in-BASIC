@@ -5,7 +5,7 @@
 - Spanish pass the test in 180sec, it is based on English2
 - Please propose your algorithm if you have faster or other language
 
-## SPEED's keys to fast basic script:
+## Keys to improve Basic program speed:
 - Limit the use of string's functions, calculation deduction can sometime be a faster alternative (compare English1 to English2)
 - Limit the use of arrays
 - Declare Variant instead of array
