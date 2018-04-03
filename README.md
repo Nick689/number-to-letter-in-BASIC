@@ -14,7 +14,7 @@
 
 ## For extreme optimisation:
 It can sometimes lead to a long program
-- List every case with a SELECT CASE instead of using an array, for example see: English3
+- List every cases with some SELECT CASE instead of using arrays, see English3 for example
 
 ## test method:
  
