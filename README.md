@@ -2,7 +2,7 @@
 - English2 pass the test in 150sec, is littlely optimised but stays compact
 - English3 pass the test in 133sec, is speed optimized by using minimaly arrays and string functions
 - French pass the test in 181sec, it is based on English2
-- Spanish pass the test in 187sec, it is based on English2
+- Spanish pass the test in 180sec, it is based on English2
 - Please propose your algorithm if you have faster or other language
 
 ## test method:
