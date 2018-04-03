@@ -12,6 +12,8 @@
 - Write IF-THEN-ELSE on one line when possible (no ENDIF at the end)
 - Prefer IF-THEN-ELSE to SELECT-CASE
 
+- List every case with a SELECT CASE instead of using an array (this is extreme optimisation like in English3)
+
 ## test method:
  
 ```
