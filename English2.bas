@@ -42,11 +42,7 @@ function english2(inputvalue as double) as string
 			triplet3=triplet-triplet1*100-triplet2*10
 			if triplet then
 				if triplet1 then outputstring=outputstring+unit01(triplet1)+" HUNDRED"
-				select case triplet2
-				case 0: outputstring=outputstring+unit01(triplet3)
-				case 1: outputstring=outputstring+unit11(triplet3)
-				case else: outputstring=outputstring+tens(triplet2)+unit01(triplet3)
-				end select
+				if triplet2=1 then outputstring=outputstring+unit11(triplet3) else outputstring=outputstring+tens(triplet2)+unit01(triplet3)
 			endif
 			select case i
 			case 1: outputstring=outputstring+" BILLION"
@@ -55,10 +51,6 @@ function english2(inputvalue as double) as string
 			end select
 		endif
 	next
-	if negative then
-		outputstring="MINUS"+outputstring
-	else
-		outputstring=mid(outputstring,2,)
-	endif
+	if negative then outputstring="MINUS"+outputstring else outputstring=mid(outputstring,2,)
 	english2=outputstring
 end function
