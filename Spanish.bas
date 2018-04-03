@@ -48,13 +48,18 @@ function spanish(inputvalue as double) as string
 			case 1,7: outputstring=outputstring+" MIL"
 			case 10: outputstring=outputstring+" UNO"
 			end select
+		case 100
+			select case i
+			case 1,7: outputstring=outputstring+" CIEN MIL"
+			case 4:	outputstring=outputstring+" CIEN MILLONES"
+			case 10: outputstring=outputstring+" CIEN"
+			end select
 		case else
 			triplet1=triplet\100 
 			triplet2=(triplet-(triplet1*100))\10
 			triplet3=triplet-triplet1*100-triplet2*10
 			select case triplet1
 			case 0:
-			case 1: if triplet=100 then outputstring=outputstring+" CIEN" else outputstring=outputstring+" CIENTO"
 			case else: outputstring=outputstring+cents(triplet1)
 			end select
 			select case triplet2
