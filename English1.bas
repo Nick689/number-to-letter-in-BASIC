@@ -48,10 +48,6 @@ function english1(inputvalue as double) as string
 			end select
 		endif
 	next
-	if negative then
-		outputstring="MINUS"+outputstring
-	else
-		outputstring=mid(outputstring,2,)
-	endif
+	if negative then outputstring="MINUS"+outputstring else outputstring=mid(outputstring,2,)
 	english1=outputstring
 end function
