@@ -57,18 +57,8 @@ function french(inputvalue as double) as string
 			select case triplet2
 			case 0: if triplet3 then outputstring=outputstring+unit01(triplet3)
 			case 1: outputstring=outputstring+unit11(triplet3)
-			case 2,3,4,5,6
-				select case triplet3
-				case 0: outputstring=outputstring+tens(triplet2)
-				case 1: outputstring=outputstring+tens(triplet2)+" ET"+unit01(triplet3)
-				case else: outputstring=outputstring+tens(triplet2)+unit01(triplet3)
-				end select
-			case 7
-				select case triplet3
-				case 0: outputstring=outputstring+" SOIXANTE DIX"
-				case 1: outputstring=outputstring+" SOIXANTE ET ONZE"
-				case else: outputstring=outputstring+" SOIXANTE"+unit11(triplet3)
-				end select
+			case 2,3,4,5,6: if triplet3=1 then outputstring=outputstring+tens(triplet2)+" ET UN" else outputstring=outputstring+tens(triplet2)+unit01(triplet3)
+			case 7: if triplet3=1 then outputstring=outputstring+" SOIXANTE ET ONZE" else outputstring=outputstring+" SOIXANTE"+unit11(triplet3)
 			case 8: if triplet3 then outputstring=outputstring+" QUATRE VINGT"+unit01(triplet3) else outputstring=outputstring+" QUATRE VINGT"
 			case 9: if triplet3 then outputstring=outputstring+" QUATRE VINGT"+unit11(triplet3) else outputstring=outputstring+" QUATRE VINGT DIX"
 			end select
@@ -79,10 +69,6 @@ function french(inputvalue as double) as string
 			end select
 		end select
 	next
-	if negative then
-		outputstring="MOINS"+outputstring
-	else
-		outputstring=mid(outputstring,2,)
-	endif
+	if negative then outputstring="MOINS"+outputstring else	outputstring=mid(outputstring,2,)
 	french=outputstring
 end function
