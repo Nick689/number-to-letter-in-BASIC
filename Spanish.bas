@@ -58,23 +58,14 @@ function spanish(inputvalue as double) as string
 			case else: outputstring=outputstring+cents(triplet1)
 			end select
 			select case triplet2
-			case 0
-				select case triplet3
-				case 0:
-				case 1:	if i=10 then outputstring=outputstring+" UNO" else outputstring=outputstring+" UN"
-				case else: outputstring=outputstring+" "+unit01(triplet3)
-				end select
+			case 0: outputstring=outputstring+" "+unit01(triplet3)
 			case 1: outputstring=outputstring+unit11(triplet3)
-			case else
-				select case triplet3
-				case 0: outputstring=outputstring+tens0(triplet2)
-				case 1:	if i=10 then outputstring=outputstring+tensx(triplet2)+" UNO" else outputstring=outputstring+tensx(triplet2)+" UN"
-				case else: outputstring=outputstring+tensx(triplet2)+unit01(triplet3)
-				end select
+			case else: if triplet3 then outputstring=outputstring+tensx(triplet2)+unit01(triplet3) else outputstring=outputstring+tens0(triplet2)
 			end select
 			select case i
 			case 1,7: outputstring=outputstring+" MIL"
 			case 4:	outputstring=outputstring+" MILLONES"
+			case 10: if triplet3=1 then outputstring=outputstring+"O"
 			end select
 		end select
 	next
