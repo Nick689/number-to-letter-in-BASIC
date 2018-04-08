@@ -7,7 +7,6 @@ function english2(inputvalue as double) as string
 	dim triplet1 as integer
 	dim triplet2 as integer
 	dim triplet3 as integer
-	dim i as integer
 	if inputvalue>999999999999 then
 		english2=""
 		exit function
@@ -28,61 +27,57 @@ function english2(inputvalue as double) as string
 		inputstring="0"+inputstring
 		leng=leng+1
 	wend
-	for i=1 to 10 step 3
-		triplet=cint(mid(inputstring,i,3))
-		if triplet then
-			triplet1=triplet\100
-			triplet2=(triplet-(triplet1*100))\10
-			triplet3=triplet-triplet1*100-triplet2*10
-			select case triplet1
-			case 1: outputstring=outputstring+" HUNDRED"
-			case 2: outputstring=outputstring+" TWO HUNDRED"
-			case 3: outputstring=outputstring+" THREE HUNDRED"
-			case 4: outputstring=outputstring+" FOUR HUNDRED"
-			case 5: outputstring=outputstring+" FIVE HUNDRED"
-			case 6: outputstring=outputstring+" SIX HUNDRED"
-			case 7: outputstring=outputstring+" SEVEN HUNDRED"
-			case 8: outputstring=outputstring+" EIGHT HUNDRED"
-			case 9: outputstring=outputstring+" NINE HUNDRED"
-			end select
-			select case triplet2
-			case 0: gosub sub01
-			case 1: gosub sub11
-			case 2
-				outputstring=outputstring+" TWENTY"
-				if triplet3 then gosub sub01
-			case 3
-				outputstring=outputstring+" THIRTY"
-				if triplet3 then gosub sub01
-			case 4
-				outputstring=outputstring+" FORTY"
-				if triplet3 then gosub sub01
-			case 5
-				outputstring=outputstring+" FIFTY"
-				if triplet3 then gosub sub01
-			case 6
-				outputstring=outputstring+" SIXTY"
-				if triplet3 then gosub sub01
-			case 7
-				outputstring=outputstring+" SEVENTY"
-				if triplet3 then gosub sub01
-			case 8
-				outputstring=outputstring+" EIGHTY"
-				if triplet3 then gosub sub01
-			case 9
-				outputstring=outputstring+" NINETY"
-				if triplet3 then gosub sub01
-			end select
-			select case i
-			case 1: outputstring=outputstring+" BILLION"
-			case 4: outputstring=outputstring+" MILLION"
-			case 7: outputstring=outputstring+" THOUSAND"
-			end select
-		endif
-	next
+	triplet=cint(mid(inputstring,1,3))
+	if triplet then
+		gosub sub00
+		outputstring=outputstring+" BILLION"
+	endif
+	triplet=cint(mid(inputstring,4,3))
+	if triplet then
+		gosub sub00
+		outputstring=outputstring+" MILLION"
+	endif
+	triplet=cint(mid(inputstring,7,3))
+	if triplet then
+		gosub sub00
+		outputstring=outputstring+" THOUSAND"
+	endif
+	triplet=cint(mid(inputstring,10,3))
+	if triplet then gosub sub00
 	if negative then outputstring="MINUS"+outputstring else	outputstring=mid(outputstring,2,)
 	english2=outputstring
 	exit function
+sub00:
+	triplet1=triplet\100
+	triplet2=(triplet-(triplet1*100))\10
+	triplet3=triplet-triplet1*100-triplet2*10
+	select case triplet1
+	case 1: outputstring=outputstring+" HUNDRED"
+	case 2: outputstring=outputstring+" TWO HUNDRED"
+	case 3: outputstring=outputstring+" THREE HUNDRED"
+	case 4: outputstring=outputstring+" FOUR HUNDRED"
+	case 5: outputstring=outputstring+" FIVE HUNDRED"
+	case 6: outputstring=outputstring+" SIX HUNDRED"
+	case 7: outputstring=outputstring+" SEVEN HUNDRED"
+	case 8: outputstring=outputstring+" EIGHT HUNDRED"
+	case 9: outputstring=outputstring+" NINE HUNDRED"
+	end select
+	if triplet2=1 then
+		gosub sub11
+	else
+		select case triplet2
+		case 2: outputstring=outputstring+" TWENTY"
+		case 3: outputstring=outputstring+" THIRTY"
+		case 4: outputstring=outputstring+" FORTY"
+		case 5: outputstring=outputstring+" FIFTY"
+		case 6: outputstring=outputstring+" SIXTY"
+		case 7: outputstring=outputstring+" SEVENTY"
+		case 8: outputstring=outputstring+" EIGHTY"
+		case 9: outputstring=outputstring+" NINETY"
+		end select
+		gosub sub01
+	endif
+return
 sub01:
 	select case triplet3
 	case 1: outputstring=outputstring+" ONE"
