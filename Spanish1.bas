@@ -1,4 +1,4 @@
-function spanish(inputvalue as double) as string
+function spanish1(inputvalue as double) as string
 	dim inputstring as string
 	dim outputstring as string
 	dim negative as boolean
@@ -19,7 +19,7 @@ function spanish(inputvalue as double) as string
 	tensx=array("",""," VEINTI"," TREINTA Y "," CUARENTA Y "," CINCUENTA Y "," SESENTA Y "," SETENTA Y "," OCHENTA Y "," NOVENTA Y ")
 	cents=array(""," CIENTO"," DOSCIENTOS"," TRESCIENTOS"," CUATROCIENTOS"," QUINIENTOS"," SEISCIENTOS"," SETECIENTOS"," OCHOCIENTOS"," NOVECIENTOS")
 	if inputvalue>999999999999 then
-		spanish=""
+		spanish1=""
 		exit function
 	endif
 	if inputvalue=0 then
@@ -79,5 +79,5 @@ function spanish(inputvalue as double) as string
 	else
 		outputstring=mid(outputstring,2,)
 	endif
-	spanish=outputstring
+	spanish1=outputstring
 end function
