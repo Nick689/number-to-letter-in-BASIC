@@ -52,7 +52,7 @@ sub00:
 	triplet2=(triplet-(triplet1*100))\10
 	triplet3=triplet-triplet1*100-triplet2*10
 	select case triplet1
-	case 1: outputstring=outputstring+" HUNDRED"
+	case 1: outputstring=outputstring+" ONE HUNDRED"
 	case 2: outputstring=outputstring+" TWO HUNDRED"
 	case 3: outputstring=outputstring+" THREE HUNDRED"
 	case 4: outputstring=outputstring+" FOUR HUNDRED"
