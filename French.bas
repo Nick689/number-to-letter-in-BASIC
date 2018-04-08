@@ -1,4 +1,4 @@
-function french2(inputvalue as double) as string
+function french(inputvalue as double) as string
 	dim inputstring as string
 	dim ouputstring as string
 	dim negative as boolean
@@ -8,7 +8,7 @@ function french2(inputvalue as double) as string
 	dim triplet2 as integer
 	dim triplet3 as integer
 	if inputvalue>999999999999 then
-		french2=""
+		french=""
 		exit function
 	endif
 	if inputvalue=0 then
@@ -54,7 +54,7 @@ function french2(inputvalue as double) as string
 	triplet=cint(mid(inputstring,10,3))
 	if triplet then gosub sub00
 	if negative then outputstring="MOINS"+outputstring else	outputstring=mid(outputstring,2,)
-	french2=outputstring
+	french=outputstring
 	exit function
 sub00:
 	triplet1=triplet\100
