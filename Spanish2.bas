@@ -71,7 +71,7 @@ function spanish2(inputvalue as double) as string
 	case 100: outputstring=outputstring+" CIEN"
 	case else
 		gosub subxxx
-		if triplet3=1 then outputstring=outputstring+"O"
+		if triplet3=1 then if triplet2<>1 then outputstring=outputstring+"O"
 	end select
 	if negative then outputstring="MENOS"+outputstring else	outputstring=mid(outputstring,2,)
 	spanish2=outputstring
