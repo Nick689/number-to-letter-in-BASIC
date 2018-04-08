@@ -55,9 +55,9 @@ function spanish(inputvalue as double) as string
 			case 10: outputstring=outputstring+" CIEN"
 			end select
 		case else
-			triplet1=triplet\100 
-			triplet2=(triplet-(triplet1*100))\10
-			triplet3=triplet-triplet1*100-triplet2*10
+			triplet1=cint(mid(inputstring,i,1))
+			triplet2=cint(mid(inputstring,i+1,1))
+			triplet3=cint(mid(inputstring,i+2,1))
 			select case triplet1
 			case 0:
 			case else: outputstring=outputstring+cents(triplet1)
