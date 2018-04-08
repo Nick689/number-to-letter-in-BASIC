@@ -1,6 +1,6 @@
 - English1 pass the test in 188sec, it is compact and easy to read, it is written in 53 lines
 - English2 pass the test in 139sec, is littlely optimised but stays compact
-- French2 pass the test in 141ec, it is based on English2
+- French pass the test in 141ec, it is based on English2
 - Spanish pass the test in 180sec, it is based on English2
 - Please propose your algorithm if you have faster or other language
 
@@ -9,7 +9,8 @@
 - Limit the use of arrays
 - Write IF-THEN-ELSE on one line when possible (no ENDIF at the end)
 - Prefer IF-THEN-ELSE on one line to SELECT-CASE
-- Declare Variant instead of array
+- When theres not too many instance, write every instance instead of loop
+- Declare Variant instead of Array
 
 ## test method:
  
