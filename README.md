@@ -9,7 +9,6 @@
 - Limit the use of string's functions, calculation deduction can sometime be a faster alternative (compare English1 to English2)
 - Limit the use of arrays
 - Write IF-THEN-ELSE on one line when possible (no ENDIF at the end)
-- Prefer IF-THEN-ELSE on one line to SELECT-CASE
 - When theres not too many instance, write every instance instead of loop
 - Declare Variant instead of Array
 
