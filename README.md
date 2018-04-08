@@ -1,7 +1,8 @@
 - English1 pass the test in 188sec, it is compact and easy to read, it is written in 53 lines
 - English2 pass the test in 139sec, is littlely optimised but stays compact
 - French pass the test in 141ec, it is based on English2
-- Spanish pass the test in 180sec, it is a mix of English1 and English2
+- Spanish1 pass the test in 180sec, it is a mix of English1 and English2
+- Spanish2 pass the test in 170sec, it is based French
 - Please propose your algorithm if you have faster or other language
 
 ## Keys to improve Basic program speed:
