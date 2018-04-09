@@ -74,10 +74,6 @@ function spanish1(inputvalue as double) as string
 			end select
 		end select
 	next
-	if negative then
-		outputstring="MENOS"+outputstring
-	else
-		outputstring=mid(outputstring,2,)
-	endif
+	if negative then outputstring="MENOS"+outputstring else outputstring=mid(outputstring,2,)
 	spanish1=outputstring
 end function
