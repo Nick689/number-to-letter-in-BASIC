@@ -1,6 +1,6 @@
 function french(inputvalue as double) as string
 	dim inputstring as string
-	dim ouputstring as string
+	dim outputstring as string
 	dim negative as boolean
 	dim leng as integer
 	dim triplet as integer
