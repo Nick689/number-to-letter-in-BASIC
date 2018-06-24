@@ -1,4 +1,4 @@
-- English1.bas pass the test in 182sec, it is compact and easy to read, it is written in 53 lines
+- English1.bas pass the test in 182sec, it is compact, easy to read, and written in 53 lines
 - English2.bas pass the test in 141sec, it is optimised for speed
 - French.bas pass the test in 143ec, it is based on English2.bas
 - Spanish1.bas pass the test in 187sec, it is a mix of English1.bas and English2.bas
