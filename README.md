@@ -8,11 +8,11 @@ result:<img width="922" height="278" alt="Capture d’écran du 2026-04-21 08-28
 
 
 ## Version choosing
-- English1.bas pass the test in 182sec, it is compact, easy to read, and written in 53 lines
-- English2.bas pass the test in 141sec, it is optimised for speed
-- French.bas pass the test in 143ec, it is based on English2.bas
-- Spanish1.bas pass the test in 187sec, it is a mix of English1.bas and English2.bas
-- Spanish2.bas pass the test in 149sec, it is based on French.bas
+- English1.bas is written in 53 lines, it pass the test in 182sec, it is easy to read
+- English2.bas is written in 108 lines, it pass the test in 141sec, it is optimised for speed
+- French.bas pass is based on English2.bas
+- Spanish1.bas is written in 79 lines, it pass the test in 187sec, it is based on English1.bas
+- Spanish2.bas is written in 162 lines, it pass the test in 149sec, it is based on French.bas
 - Please propose your algorithm if you have faster or other language
 
 ## Speed testing method
