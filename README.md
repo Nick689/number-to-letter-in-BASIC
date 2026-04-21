@@ -1,7 +1,7 @@
 ## Usage
 ```
 sub test
-	msgbox(english1(123456))
+	msgbox(French(123456))
 end sub
 ```
 result:<img width="922" height="278" alt="Capture d’écran du 2026-04-21 08-28-09" src="https://github.com/user-attachments/assets/e34f20ce-9aae-4223-8c05-bd91d4dc343e" />
